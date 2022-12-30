@@ -3,7 +3,7 @@ import Title from "../components/ui/Title";
 import Colors from "../constants/colors";
 import PrimaryBtn from "../components/ui/buttons/PrimaryBtn";
 
-export default function GameOver() {
+export default function GameOver({rounds, userNumber, onStartNewGame}) {
     return (
         <View style={styles.rootContainer}>
             <Title style={styles.title}>Game Over!</Title>
@@ -13,10 +13,11 @@ export default function GameOver() {
             </View>
 
             <Text style={styles.summaryText}>
-                You phone needed <Text style={styles.highlight}>X</Text> rounds to guess the number <Text style={styles.highlight}>X</Text>.
+                You phone needed <Text style={styles.highlight}>{rounds}</Text> rounds to guess the
+                number <Text style={styles.highlight}>{userNumber}</Text>.
             </Text>
 
-            <PrimaryBtn>Start New Game</PrimaryBtn>
+            <PrimaryBtn onPress={onStartNewGame}>Start New Game</PrimaryBtn>
         </View>
     );
 }
