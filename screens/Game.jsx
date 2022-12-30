@@ -6,6 +6,7 @@ import RandNumBetween from "../functions/RandNumBetween";
 import PrimaryBtn from "../components/ui/buttons/PrimaryBtn";
 import Card from "../components/ui/Card";
 import InstructionText from "../components/ui/InstructionText";
+import {Ionicons} from '@expo/vector-icons';
 
 let minBoundary = 1;
 let maxBoundary = 100;
@@ -47,11 +48,15 @@ export default function Game({userNumber, onGameOver}) {
 
                 <View style={styles.buttonsContainer}>
                     <View style={styles.button}>
-                        <PrimaryBtn onPress={nextGuessHandler.bind(this, 'lower')}>-</PrimaryBtn>
+                        <PrimaryBtn onPress={nextGuessHandler.bind(this, 'lower')}>
+                            <Ionicons name={'md-remove'} size={24} color={'white'}></Ionicons>
+                        </PrimaryBtn>
                     </View>
 
                     <View style={styles.button}>
-                        <PrimaryBtn onPress={nextGuessHandler.bind(this, 'greater')}>+</PrimaryBtn>
+                        <PrimaryBtn onPress={nextGuessHandler.bind(this, 'greater')}>
+                            <Ionicons name={'md-add'} size={24} color={'white'}></Ionicons>
+                        </PrimaryBtn>
                     </View>
                 </View>
             </Card>
