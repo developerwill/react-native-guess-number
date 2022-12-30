@@ -6,18 +6,15 @@ import Game from "./screens/Game";
 import Colors from "./constants/colors";
 import GameOver from "./screens/GameOver";
 import {useFonts} from "expo-font";
-import AppLoading from "expo-app-loading";
 
 export default function App() {
     const [userNumber, setUserNumber] = useState(null);
     const [gameIsOver, setGameIsOver] = useState(true);
 
-    const [fontsLoaded] = useFonts({
+    useFonts({
         'open-sans': require('./assets/fonts/OpenSans-Regular.ttf'),
         'open-sans-bold': require('./assets/fonts/OpenSans-Bold.ttf'),
     });
-
-    if(!fontsLoaded) return <AppLoading/>
 
     const pickedNumberHandler = (pickedNumber) => {
         setUserNumber(pickedNumber);
