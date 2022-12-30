@@ -1,9 +1,11 @@
 import {useState, useEffect} from "react";
-import {Alert, StyleSheet, Text, View} from "react-native";
+import {Alert, StyleSheet, View} from "react-native";
 import Title from "../components/ui/Title";
 import NumberContainer from "../components/game/NumberContainer";
 import RandNumBetween from "../functions/RandNumBetween";
 import PrimaryBtn from "../components/ui/buttons/PrimaryBtn";
+import Card from "../components/ui/Card";
+import InstructionText from "../components/ui/InstructionText";
 
 let minBoundary = 1;
 let maxBoundary = 100;
@@ -37,11 +39,11 @@ export default function Game({userNumber, onGameOver}) {
 
     return (
         <View style={styles.screen}>
-            <Title>Game Screen madafoca!</Title>
+            <Title>Opponent's Guess</Title>
             <NumberContainer>{currentGuess}</NumberContainer>
 
-            <View>
-                <Text>Higher or lower?</Text>
+            <Card>
+                <InstructionText>Higher or lower?</InstructionText>
 
                 <View style={styles.buttonsContainer}>
                     <View style={styles.button}>
@@ -52,12 +54,7 @@ export default function Game({userNumber, onGameOver}) {
                         <PrimaryBtn onPress={nextGuessHandler.bind(this, 'greater')}>+</PrimaryBtn>
                     </View>
                 </View>
-
-            </View>
-
-            <View>
-                <Text>Game Screen!</Text>
-            </View>
+            </Card>
         </View>
     );
 }
