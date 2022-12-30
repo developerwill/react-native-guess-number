@@ -10,14 +10,22 @@ export default function StartGame() {
                 keyboardType={'number-pad'}
                 autoCorrect={false}
             />
-            <PrimaryBtn>Reset</PrimaryBtn>
-            <PrimaryBtn>Confirm</PrimaryBtn>
+            <View style={styles.buttonsContainer}>
+                <View style={styles.buttonContainer}>
+                    <PrimaryBtn>Reset</PrimaryBtn>
+                </View>
+                <View style={styles.buttonContainer}>
+                    <PrimaryBtn>Confirm</PrimaryBtn>
+                </View>
+            </View>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
     inputContainer: {
+        justifyContent: 'center',
+        alignItems: 'center',
         padding: 16,
         marginTop: 100,
         marginHorizontal: 24,
@@ -35,5 +43,11 @@ const styles = StyleSheet.create({
         marginVertical: 8,
         fontWeight: 'bold',
         textAlign: 'center'
+    },
+    buttonsContainer: {
+        flexDirection: 'row'
+    },
+    buttonContainer: {
+        flex: 1
     }
 });
