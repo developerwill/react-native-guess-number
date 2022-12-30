@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import {Alert, StyleSheet, Text, View} from "react-native";
 import Title from "../components/ui/Title";
 import NumberContainer from "../components/game/NumberContainer";
@@ -8,8 +8,14 @@ import PrimaryBtn from "../components/ui/buttons/PrimaryBtn";
 let minBoundary = 1;
 let maxBoundary = 100;
 
-export default function Game({userNumber}) {
-    const [currentGuess, setCurrentGuess] = useState(RandNumBetween(minBoundary, maxBoundary, userNumber));
+export default function Game({userNumber, onGameOver}) {
+    const [currentGuess, setCurrentGuess] = useState(RandNumBetween(1, 100, userNumber));
+
+    useEffect(() => {
+        if (currentGuess === userNumber) {
+            onGameOver();
+        }
+    }, [currentGuess, userNumber, onGameOver]);
 
     const nextGuessHandler = (direction) => {
         if (
