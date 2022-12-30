@@ -5,10 +5,19 @@ import {LinearGradient} from "expo-linear-gradient";
 import Game from "./screens/Game";
 import Colors from "./constants/colors";
 import GameOver from "./screens/GameOver";
+import {useFonts} from "expo-font";
+import AppLoading from "expo-app-loading";
 
 export default function App() {
     const [userNumber, setUserNumber] = useState(null);
     const [gameIsOver, setGameIsOver] = useState(true);
+
+    const [fontsLoaded] = useFonts({
+        'open-sans': require('./assets/fonts/OpenSans-Regular.ttf'),
+        'open-sans-bold': require('./assets/fonts/OpenSans-Bold.ttf'),
+    });
+
+    if(!fontsLoaded) return <AppLoading/>
 
     const pickedNumberHandler = (pickedNumber) => {
         setUserNumber(pickedNumber);
@@ -24,7 +33,6 @@ export default function App() {
     if (userNumber) screen = <Game userNumber={userNumber} onGameOver={gameOverHandler}/>
 
     if (gameIsOver && userNumber) screen = <GameOver/>
-
 
     return (<LinearGradient colors={[Colors.primary700, Colors.accent500]} style={styles.rootScreen}>
         <ImageBackground
