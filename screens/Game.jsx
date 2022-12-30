@@ -1,9 +1,10 @@
 import {StyleSheet, Text, View} from "react-native";
+import Title from "../components/Title";
 
 export default function Game() {
     return (
         <View style={styles.screen}>
-            <Text>Game Screen!</Text>
+            <Title>Game Screen madafoca!</Title>
 
             <View>
                 <Text>Game Screen!</Text>
