@@ -3,6 +3,7 @@ import {ImageBackground, SafeAreaView, StyleSheet} from 'react-native';
 import StartGame from "./screens/StartGame";
 import {LinearGradient} from "expo-linear-gradient";
 import Game from "./screens/Game";
+import Colors from "./constants/colors";
 
 export default function App() {
     const [userNumber, setUserNumber] = useState(null);
@@ -15,7 +16,7 @@ export default function App() {
 
     if (userNumber) screen = <Game/>
 
-    return (<LinearGradient colors={['#4e0329', '#ddb52f']} style={styles.rootScreen}>
+    return (<LinearGradient colors={[Colors.primary700, Colors.accent500]} style={styles.rootScreen}>
         <ImageBackground
             style={styles.rootScreen}
             source={require('./assets/background.png')}
