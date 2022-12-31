@@ -1,15 +1,35 @@
-import {Image, StyleSheet, Text, View} from "react-native";
+import {Image, StyleSheet, Text, View, useWindowDimensions} from "react-native";
 import Title from "../components/ui/Title";
 import Colors from "../constants/colors";
 import PrimaryBtn from "../components/ui/buttons/PrimaryBtn";
-import {deviceWidth} from "../functions/DeviceInfo";
 
 export default function GameOver({rounds, userNumber, onStartNewGame}) {
+    const {width, height} = useWindowDimensions();
+
+    let imageWidth = 200;
+    let imageHeight = 300
+
+    if (width < 380) {
+        imageWidth = 150;
+        imageHeight = 300;
+    }
+
+    if (height < 400) {
+        imageWidth = '80%';
+        imageHeight = 100;
+    }
+
+    const imageStyle = {
+        width: imageWidth,
+        height: imageHeight,
+        borderRadius: imageHeight / 2
+    }
+
     return (
         <View style={styles.rootContainer}>
             <Title style={styles.title}>Game Over!</Title>
 
-            <View style={styles.imageContainer}>
+            <View style={[styles.imageContainer, imageStyle]}>
                 <Image source={require('../assets/success.png')} style={styles.image}/>
             </View>
 
@@ -24,6 +44,9 @@ export default function GameOver({rounds, userNumber, onStartNewGame}) {
 }
 
 const styles = StyleSheet.create({
+    screen: {
+        flex: 1
+    },
     rootContainer: {
         flex: 1,
         padding: 24,
@@ -34,9 +57,9 @@ const styles = StyleSheet.create({
         textTransform: 'uppercase'
     },
     imageContainer: {
-        width: deviceWidth < 380 ? 150 : 200,
+        /*width: deviceWidth < 380 ? 150 : 200,
         height: deviceWidth < 380 ? 250 : 300,
-        borderRadius: deviceWidth < 380 ? 75 : 150,
+        borderRadius: deviceWidth < 380 ? 75 : 150,*/
         borderWidth: 3,
         borderColor: Colors.primary800,
         overflow: 'hidden',
