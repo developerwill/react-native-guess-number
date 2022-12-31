@@ -2,6 +2,7 @@ import {Image, StyleSheet, Text, View} from "react-native";
 import Title from "../components/ui/Title";
 import Colors from "../constants/colors";
 import PrimaryBtn from "../components/ui/buttons/PrimaryBtn";
+import {deviceWidth} from "../functions/DeviceInfo";
 
 export default function GameOver({rounds, userNumber, onStartNewGame}) {
     return (
@@ -33,9 +34,9 @@ const styles = StyleSheet.create({
         textTransform: 'uppercase'
     },
     imageContainer: {
-        width: 300,
-        height: 300,
-        borderRadius: 200,
+        width: deviceWidth < 380 ? 150 : 200,
+        height: deviceWidth < 380 ? 250 : 300,
+        borderRadius: deviceWidth < 380 ? 75 : 150,
         borderWidth: 3,
         borderColor: Colors.primary800,
         overflow: 'hidden',
